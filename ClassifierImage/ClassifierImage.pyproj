@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>ClassifierImage</Name>
     <RootNamespace>ClassifierImage</RootNamespace>
+    <InterpreterId>CondaEnv|CondaEnv|classifier2</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ClassifierImage.py" />
+    <Compile Include="Class_Aux\Class_Load.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class_Aux\Class_Save.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Class_Aux\Class_Training.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Class_Aux\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|classifier2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

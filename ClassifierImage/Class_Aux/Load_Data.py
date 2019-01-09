@@ -10,7 +10,7 @@ import tensorflow as tf
 
 class Load_Data(object):
     """Class for load data"""
-    def __init__(self, eta = 0.01, epochs = 50, verbose=0, batch_size =64, lear_rate = 1e-4, num_classes = 63):
+    def __init__(self, eta = 0.01, epochs = 50, verbose=2, batch_size =64, lear_rate = 1e-4, num_classes = 63):
         self.eta = eta
         self.epochs = epochs
         self.verbose = verbose
@@ -18,7 +18,7 @@ class Load_Data(object):
         self.lear_rate = lear_rate
         self.num_classes = num_classes
 
-    def load_data(data_dir):
+    def load_data(self, data_dir):
         #Carrega um conjunto de dados e retorna duas listas:
         #Images: Uma lista de arrays Numpy, cada uma representando uma imagem.
         #Labels: Uma lista de números que representam as etiquetas das imagens.
@@ -37,5 +37,6 @@ class Load_Data(object):
             for f in file_names:
                 images.append(skimage.data.imread(f))
                 labels.append(int(d))
+        print("Labels Únicos: {0}\nTotal Imagens: {1}".format(len(set(labels)), len(images)))
         return images, labels
 

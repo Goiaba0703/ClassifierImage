@@ -9,7 +9,7 @@ import tensorflow as tf
 
 class Class_Redim_Image(object):
     """Class for resize image"""
-    def __init__(self, eta = 0.01, epochs = 50, verbose=0, batch_size =64, lear_rate = 1e-4, num_classes = 63):
+    def __init__(self, eta = 0.01, epochs = 50, verbose=2, batch_size =64, lear_rate = 1e-4, num_classes = 63):
         self.eta = eta
         self.epochs = epochs
         self.verbose = verbose
@@ -17,11 +17,11 @@ class Class_Redim_Image(object):
         self.lear_rate = lear_rate
         self.num_classes = num_classes
 
-    def redim_image(image):
+    def redim_image(self,images):
         images32 = [skimage.transform.resize(image, (32, 32)) for image in images]
         return images32
 
-    def redim_pixels(X_train, X_test, y_train, y_test):
+    def redim_pixels(self,X_train, X_test, y_train, y_test):
         #Coloca elas no tamanho 32x32
         img_rows, img_cols = 32, 32
 
@@ -40,8 +40,8 @@ class Class_Redim_Image(object):
 
         # Reshape dos dados de treino e de teste e input_shape
 
-        #X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 1)
-        #X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols,1)
+        X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 3)
+        X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols,3)
         input_shape = (img_rows, img_cols, 3)
 
         # Conversão para float32 
